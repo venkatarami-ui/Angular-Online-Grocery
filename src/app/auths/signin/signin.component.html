@@ -1,0 +1,72 @@
+<div class="card col-md-12">
+    <h5 class="card-header">LogIn Account</h5>
+    <div class="card-body">
+        <div class="col-md-12 m-5">
+            <div class="alert alert-danger" *ngIf="errorMessage">
+                {{errorMessage}}
+            </div>
+            <form (ngSubmit)="onSubmit()" [formGroup]="signInForm" autocomplete="off">
+                <div class="form-group mx-2">
+                    <label for="email" class="form-label fw-bold required">Email</label>
+                    <input
+                        type="email"
+                        class="form-control"
+                        name="email"
+                        formControlName="email"
+                        placeholder="Enter Email Address"
+                    >
+                    <div *ngIf="!signInForm.get('email').valid && (signInForm.get('email').touched || signInForm.get('email').dirty)" class="text-danger">
+                        <span *ngIf="signInForm.get('email').errors?.['required']">
+                            Email is required
+                        </span>
+                        <span *ngIf="signInForm.get('email').errors?.['email']">
+                            Email is inavlid
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group mx-2">
+                    <label for="password" class="form-label fw-bold required">Password</label>
+                    <div class="input-group">
+                        <input
+                            [type]="toggleType"
+                            class="form-control"
+                            name="password"
+                            formControlName="password"
+                            placeholder="Enter Password"
+                        >
+                        <div class="input-group-append">
+                            <button
+                                type="button"
+                                class="input-group-text"
+                                (click)="togglePassword()"
+                            >
+                            {{toggleBtn}}
+                            </button>
+                        </div>
+                    </div>
+                    <div *ngIf="!signInForm.get('password').valid && (signInForm.get('password').touched || signInForm.get('password').dirty)" class="text-danger">
+                        <span *ngIf="signInForm.get('password').errors?.['required']">
+                            Password is required
+                        </span>
+                        <span *ngIf="signInForm.get('password').errors?.['minlength']">
+                            Password must be at least 6 characters
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group text-center d-grid">
+                    <span class="p-3">
+                        Have no account?
+                        <a routerLink="/signup" class="text-default">Register here</a>
+                    </span>
+                    <button
+                        type="submit"
+                        class="btn btn-success"
+                        [disabled]="!signInForm.valid"
+                    >
+                    LogIn
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

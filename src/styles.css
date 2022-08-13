@@ -1,1 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
+
+.bg-custom {
+  /* background-color: #377400 !important; */
+  background-color: #04944d !important ;
+  color: #000;
+  font-size: larger !important;
+}
+.nav-link {
+  color: #fff !important;
+}
+.logout{
+  background-color: #2ecf00 !important;
+    border: 0px solid !important;
+    color: #000 !important;
+}
+
+/********* Custom slim scroll bar *******/
+
+
+/* width */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+

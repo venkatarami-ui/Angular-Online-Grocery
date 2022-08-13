@@ -1,0 +1,28 @@
+.card {
+    background: #fff;
+    /* background: linear-gradient(110deg, #377400) 0%, rgb(161, 192, 255) 100%); */
+}
+.card h1,
+h6 {
+    color: #000;
+}
+
+label {
+    color: #000;
+}
+
+#loginBtn {
+    size: 25px;
+    cursor: pointer;
+}
+.card-header {
+    color: #0259dc;
+}
+
+.row-remove-space {
+    --bs-gutter-x: 0rem !important;
+}
+.singin-button {
+    --bs-btn-padding-x: 4rem;
+    margin-left: 30%;
+}

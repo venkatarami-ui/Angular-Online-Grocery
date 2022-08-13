@@ -1,0 +1,86 @@
+<div class="card col-md-12">
+    <h5 class="card-header">Register Account</h5>
+    <div class="card-body">
+        <div class="m-5">
+            <div class="alert alert-danger" *ngIf="errorMessage">
+                {{errorMessage}}
+            </div>
+            <form (ngSubmit)="onSubmit()" autocomplete="off" [formGroup]="signUpForm">
+                <div class="form-group my-2">
+                    <label for="email" class="form-label fw-bold required">Email</label>
+                    <input
+                        type="email"
+                        class="form-control"
+                        name="email"
+                        formControlName="email"
+                        placeholder="Enter Email Address"
+                    >
+                    <div *ngIf="!signUpForm.get('email').valid && (signUpForm.get('email').touched || signUpForm.get('email').dirty)" class="text-danger">
+                        <span *ngIf="signUpForm.get('email').errors?.['required']">
+                            Email is required
+                        </span>
+                        <span *ngIf="signUpForm.get('email').errors?.['email']">
+                            Email is inavlid
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col form-group my-2">
+                        <label for="password" class="form-label fw-bold required">Password</label>
+                        <input
+                            type="password"
+                            class="form-control"
+                            name="password"
+                            formControlName="password"
+                            placeholder="Enter Password"
+                        >
+                        <div *ngIf="!signUpForm.get('password').valid && (signUpForm.get('password').touched || signUpForm.get('password').dirty)" class="text-danger">
+                            <span *ngIf="signUpForm.get('password').errors?.['required']">
+                                Password is required
+                            </span>
+                            <span *ngIf="signUpForm.get('password').errors?.['pattern']">
+                                Password is invalid
+                            </span>
+                            <span *ngIf="signUpForm.get('password').errors?.['minlength']">
+                                Password must be at least 6 characters
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col form-group my-2">
+                        <label for="confirmPassword" class="form-label fw-bold required">Confirm Password</label>
+                        <input
+                            type="password"
+                            class="form-control"
+                            name="confirmPassword"
+                            formControlName="confirmPassword"
+                            placeholder="Enter Confirm Password"
+                        >
+                        <div *ngIf="!signUpForm.get('confirmPassword').valid && (signUpForm.get('confirmPassword').touched || signUpForm.get('confirmPassword').dirty)" class="text-danger">
+                            <span *ngIf="signUpForm.get('confirmPassword').errors?.['required']">
+                                Password is required
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="my-2 form-group text-center">
+                    <small>
+                        Password should have atleast 1 uppercase, 1 lower, 1 number, 1 special character and must be atleast 6 characters long
+                    </small>
+                </div>
+                <div class="form-group text-center d-grid">
+                    <span class="p-3">
+                        Already have account?
+                        <a routerLink="/signin" class="text-default">Login here</a>
+                    </span>
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        [disabled]="!signUpForm.valid"
+                    >
+                    SignUp
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

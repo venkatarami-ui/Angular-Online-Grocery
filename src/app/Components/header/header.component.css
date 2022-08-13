@@ -1,0 +1,12 @@
+ul li {
+    margin-right: 10px;
+}
+
+.cart-btn-width {
+    width: 150px !important;
+    width: 30px !important;
+    height: 30px !important;
+    padding: 10px !important;
+    margin-left: 15px !important;
+  
+  }

@@ -1,0 +1,15 @@
+.form-group .ng-invalid,
+.form-group .ng-touched {
+    border-left: 5px solid #ff0000;
+    border-color: #ff0000;
+}
+
+.form-group .ng-untouched {
+    border-left: 5px solid #ced4da;
+    border-color: #ced4da;
+}
+
+.form-group .ng-valid {
+    border-left: 5px solid #008000;
+    border-color: #008000;
+}

@@ -1,0 +1,54 @@
+<div class="container bg-lite">
+<div class="card">
+  <div class="card-body">
+      <h4 class="card-title title-color">Grocerary Details View</h4>
+        <div class="nav-item">
+            <!-- <span><strong class="cart-but btn-value"> Product Checkout Info : {{ totalItem }} </strong> </span> -->
+            <button class="btn btn-default  btn-success btn-value " routerLink="/cart">Processed to Checkout </button>
+        </div>
+      <div class="container row mx-auto py-3 g-2">
+          <div class="col-lg-3 col-md-3 col-12" *ngFor="let product of products">
+              <div class="card product shadow-sm h-100">
+                  <img src="{{ product.imgUrl }}" class="card-img-top img-round" alt="{{ product.productName }}" />
+                  <div class="card-body">
+                      <h6 class="card-product-title text-muted">
+                          {{ product.productName }} - 1 Kg
+                      </h6>
+                      <div class="row align-items-center">
+                            <div class="col-12">
+                                <span class="card-subtitle">{{ product.price | currency : 'INR' }}</span>
+                            </div>
+
+
+                            <div class="row align-items-end">
+                                <div class="col">
+                                    <button class="btn btn-default" (click)="onDecrement()">
+                                        <i class="material-icons">-</i>
+                                    </button>
+                                </div>
+                                <div class="col">
+                                    <input type="number" value="{{votes}}" class="form-control" >
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-default" (click)="onIncrement()">
+                                        <i class="material-icons">+</i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-end">
+                                <div class="col">
+                                    <button class="btn btn-sm btn-success add-cart " (click)="addToCart(product)">
+                                        Add to Cart
+                                    </button> 
+                                </div>
+                            </div>
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+</div>

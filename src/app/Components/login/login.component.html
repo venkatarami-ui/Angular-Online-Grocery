@@ -1,0 +1,85 @@
+<div *ngIf="error" class="container">
+  <div class="console.log console.log-danger" role="console.log">
+    <strong>An Error Occurred :</strong> {{ error }}
+  </div>
+</div>
+<div class="col-md-12">
+  <div class="card-body">
+      <div class="col-md-12 my-5">
+        <div class="row justify-content-center align-items-center row-remove-space">
+          <div class="col-4">
+<br />
+<br />
+<br />
+<br />
+
+            <div class="card">
+                <h5 class="card-header">Grocerary {{ isLoginMode ? "Login" : "Sign Up" }}!</h5>
+              <div class="card-body">
+                <div class="text-center">
+                  <!-- <h1>{{ isLoginMode ? "Login" : "Sign Up" }}</h1> -->
+                  <h1> </h1>
+                </div>
+                <form>
+                  <form [formGroup]="Form" (ngSubmit)="onSubmit()">
+                    <div class="mb-4 form-group">
+                      <label for="exampleInputEmail1 form-label" class="form-label"
+                        >Email address</label
+                      >
+                      <input
+                        type="email"
+                        class="form-control"
+                        formControlName="email"
+                        id="exampleInputEmail1"
+                      />
+                      <small
+                        *ngIf="
+                          !Form.get('email')?.valid && Form.get('email')?.touched
+                        "
+                        class="form-text text-danger w-100"
+                        >Please enter an Email</small
+                      >
+                    </div>
+                    <div class="mb-4">
+                      <label for="exampleinputPassword1" class="form-label"
+                        >Password</label
+                      >
+                      <input
+                        type="password"
+                        class="form-control"
+                        formControlName="password"
+                        id="exampleInputPassword1"
+                      />
+                      <small
+                        *ngIf="
+                          !Form.get('password')?.valid &&
+                          Form.get('password')?.touched
+                        "
+                        class="form-text text-danger w-100"
+                        >Please enter a valid password.</small
+                      >
+                    </div>
+                    <button type="Submit" class="btn btn-success singin-button ">
+                      {{ isLoginMode ? "Login" : "Create Account" }}
+                    </button>
+                  </form>
+                </form>
+                <p class="text-dark mt-5 singin-button">
+                  {{
+                    isLoginMode ? "New user? Click on" : "Already a user? Click on"
+                  }}
+                  <a
+                    id="loginBtn"
+                    class="text-default text-decoration-none "
+                    (click)="onSwitchMode()"
+                    ><strong> {{ isLoginMode ? "Sign Up" : "Login" }} </strong></a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+</div>

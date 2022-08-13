@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-custom">
+  <div class="container">
+      <a class="navbar-brand" routerLink="/">HCL Grocerary App</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <ul class="navbar-nav">
+          <li class="nav-item">
+              <button type="button" class="btn btn-outline-warning" routerLink="/login" *ngIf="!userLoggedIn">
+                  Sign In
+              </button>
+          </li>
+          <li class="nav-item profile" *ngIf="userLoggedIn">
+              <ul class="navbar-nav ml-auto align-items-center">
+                  <li><a class="nav-link" routerLink="dashboard">Home</a></li>
+
+                  <li>
+                      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                          <div class="navbar-nav">
+                              <a class="nav-link active" routerLink="/product-list" routerLinkActive="active" *ngIf="userLoggedIn">My Product</a>
+                          </div>
+                      </div>
+                  </li>
+                  <li><a class="nav-link" routerLink="myorders">My Orders </a></li>
+                  
+              </ul>
+          </li>
+          <li>
+              <div class="nav-item" style="padding: 7px;color: #fff;">
+                <span><strong class="cart-but btn-value"> Product Checkout Info : {{ totalItem }} </strong> </span>
+                  <!-- <button class="btn btn-light" routerLink="/cart">Cart <span class="badge custom-btn-width text-white bg-warning"> {{ totalItem }}</span></button> -->
+                  <button class="btn btn-dark" routerLink="/cart">Checkout</button>
+              </div>
+          </li>
+          <li>
+            <span>
+                <img class="rounded-circle" src="/assets/Images/user.png" width="40" height="40" />
+            </span>
+            <!-- <span>  Welcome, {{userLoggedIn }}</span> -->
+            </li>
+            <li>
+                <a (click)="onLogOut()" class="nav-link" href="#">Sign Out</a>
+            </li>
+      </ul>
+  </div>
+</nav>

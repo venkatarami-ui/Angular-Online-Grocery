@@ -1,0 +1,139 @@
+<div class="container">
+    <p></p>
+    <div class="container">
+        <div class="row">
+            <div class="col order-last">
+                <label for="search" class="col-sm-12 col-form-label">Search</label>
+            </div>
+            <div class="col">
+                <input type="text" [(ngModel)]="searchValue" class="form-control" id="search" />
+            </div>
+            <div class="col order-last justify-content-center">
+                <button type="button" (click)="clickAddProduct()" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Add Product
+                </button>
+            </div>
+        </div>
+    </div>
+    <p></p>
+
+    <table class="table table-bordered border-primary">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">Price</th>
+                <th scope="col">Date</th>
+                <th scope="col">Description</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr
+                *ngFor="
+        let product of keyData | searchFilter: searchValue;
+        let i = index
+      "
+            >
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ product.productName }}</td>
+                <td>{{ product.category }}</td>
+                <td>{{ product.price | currency: "INR":"symbol" }}</td>
+                <td>{{ product.date | date }}</td>
+                <td>{{ product.description }}</td>
+                <td>
+                    <span class="btn btn-warning cart-button" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" routerLink="/edit-product/{{ product.k }}" (click)="editProduct(product)">Edit</span>
+                    &nbsp;
+                    <span class="btn btn-danger cart-button" (click)="removeProduct(product.k)">Delete</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal form -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">
+                    {{ showUpdateBtn ? "Update Product Form" : "Add Product Form" }}
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="productForm">
+                    <div class="mb-3">
+                        <label for="InputId" class="form-label">Product ID</label>
+                        <input type="text" formControlName="id" class="form-control" id="InputId" [readonly]="showUpdateBtn" required />
+                        <small
+                            *ngIf="  !productForm.get('id')?.valid && productForm.get('id')?.touched "
+                            class="form-text text-danger cart-button w-100"
+                        >
+                            Please id is mandatory.
+                        </small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputName" class="form-label">Product Name</label>
+                        <input type="text" formControlName="productName" class="form-control" id="InputName" required />
+                        <small
+                            *ngIf="  !productForm.get('productName')?.valid &&   productForm.get('productName')?.touched"
+                            class="form-text text-danger cart-button w-100"
+                        >
+                            Please enter a name.
+                        </small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputCat" class="form-label">Category</label>
+                        <select class="form-select" formControlName="category" aria-label="Default select example" required>
+                            <option value="Dairy">Dairy</option>
+                            <option value="Fruits & Vegetables">Fruits & Vegetables</option>
+                            <option value="Bread & Baked Goods">Bread & Baked Goods</option>
+                            <option value="Cereals">Cereals</option>
+                            <option value="Others">Others</option>
+                        </select>
+                        <small
+                            *ngIf=" !productForm.get('category')?.valid &&  productForm.get('category')?.touched "
+                            class="form-text text-danger cart-button w-100"
+                        >
+                            Please choose a category.
+                        </small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputDate" class="form-label">Date</label>
+                        <input type="text" formControlName="date" class="form-control" id="InputDate" [value]="date | date: 'dd/MM/yyyy'" [placeholder]="date | date: 'dd/MM/yyyy'" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputPrice" class="form-label">Price</label>
+                        <input type="number" formControlName="price" class="form-control" id="InputPrice" required />
+                        <small
+                            *ngIf="
+              !productForm.get('price')?.valid &&
+              productForm.get('price')?.touched
+            "
+                            class="form-text text-danger cart-button w-100"
+                        >
+                            Please choose a category.
+                        </small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputDescription" class="form-label">Description</label>
+                        <textarea class="form-control" formControlName="description" id="InputDescription" cols="30" rows="3"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="button" *ngIf="showAddBtn" (click)="addProduct(productForm)" class="btn btn-primary">
+                            Add
+                        </button>
+                        <button *ngIf="showUpdateBtn" type="button" (click)="updateProduct()" class="btn btn-primary">
+                            Update
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

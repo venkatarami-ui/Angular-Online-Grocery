@@ -1,0 +1,211 @@
+<div class="container bg-light">
+  <div class="row mx-auto">
+      <div class="col-lg-8 py-5">
+          <div class="row gy-3">
+              <div class="col-lg-12">
+                  <div class="card border-0 shadow">
+                      <div class="card-body">
+                          <h5 class="card-title title-color">Select Delivery Address</h5>
+                          <div class="row g-3">
+                              <!-- <div class="col-lg-6">
+                                  <a href="#offcanvasExample" class="text-dark text-decoration-none" data-bs-toggle="offcanvas">
+                                      <div class="card bg-warning border-0 text-center h-100">
+                                          <div class="card-body h-100 d-flex justify-content-center align-items-center">
+                                              <h5 class="card-title">Add New Address</h5>
+                                          </div>
+                                      </div>
+                                  </a>
+                              </div> -->
+                              <div class="col-lg-6">
+                                  <div class="position-relative">
+                                      <input class="form-check-input position-absolute" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                                      <label class="form-check-label" for="flexRadioDefault1">
+                                          <div class="card border-warning">
+                                              <div class="card-body">
+                                                  <h6 class="card-title text-center title-color">Home</h6>
+                                                  <p>
+                                                    <strong>Venkata Rami Reddy </strong> 
+                                                    House No #W1-703, Bren Imperia Apartment,
+                                                    15th Main Road, Shubh Enclave, Haralur Main Rd,
+                                                    Bangalore, Karnataka 560102
+                                                    India
+                                                    Phone number: +91-9886016222
+                                                  </p>
+                                              </div>
+                                          </div>
+                                      </label>
+                                  </div>
+                              </div>
+                               
+                              <div class="col-lg-6" *ngFor="let ob of myAddress">
+                                  <div class="position-relative">
+                                      <input class="form-check-input position-absolute" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked />
+                                      <label class="form-check-label" for="flexRadioDefault3">
+                                          <div class="card new-card border-warning">
+                                              <div class="card-body">
+                                                  <h6 class="card-title text-center">
+                                                      {{ ob.firstName1 }}
+                                                  </h6>
+                                                  {{ ob.addr11 }} {{ ob.addr22 }} {{ ob.addr33 }} {{ ob.addr44 }} {{ ob.addr55 }} {{ ob.addr66 }}
+                                              </div>
+                                          </div>
+                                      </label>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col-lg-12">
+                  <div class="card border-0 shadow">
+                      <div class="card-body">
+                          <h5 class="card-title title-color">Select Payment Method</h5>
+                          <p> <br /> </p>
+                          <div id="tabs" class="d-flex align-items-start">
+                              <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                  <button class="nav-link active my-0 py-2" id="v-pills-card-tab" data-bs-toggle="pill" data-bs-target="#v-pills-card" type="button" role="tab" aria-controls="v-pills-card" aria-selected="true">
+                                      Credit or Debit Card
+                                  </button>
+                                  <button class="nav-link active my-2 py-3" id="v-pills-net-tab " data-bs-toggle="pill" data-bs-target="#v-pills-net" type="button" role="tab" aria-controls="v-pills-net" aria-selected="false">
+                                      Net Banking
+                                  </button>
+                                  <button class="nav-link active my-2 py-3" id="v-pills-cash-tab" data-bs-toggle="pill" data-bs-target="#v-pills-cash" type="button" role="tab" aria-controls="v-pills-cash" aria-selected="false">
+                                      Cash on delivery
+                                  </button>
+                              </div>
+                              <div class="tab-content" id="v-pills-tabContent">
+                                  <div class="tab-pane fade show active" id="v-pills-card" role="tabpanel" aria-labelledby="v-pills-card-tab" tabindex="0">
+                                      <form [formGroup]="payFormm" action="#">
+                                          <input type="text" name="cardo" id="cardo" class="form-control mb-3 py-3" placeholder="Card Owner's Name" formControlName="cardo" />
+                                          <span
+                                              class="form-text text-danger " *ngIf="  payFormm.get('cardo')?.invalid && payFormm.get('cardo')?.touched "
+                                          >
+                                              This field should not be empty
+                                          </span>
+                                          <input type="number" name="card-number" id="card-number" class="form-control mb-3 py-3" placeholder="Card Number" required min="16" formControlName="cardn" />
+
+                                          <span
+                                              class="form-text text-danger"  *ngIf="payFormm.get('cardn')?.invalid && payFormm.get('cardn')?.touched "
+                                          >
+                                              Enter valid the card number
+                                          </span>
+                                          <div class="row mx-auto">
+                                              <div class="col ps-0">
+                                                  <div class="input-group">
+                                                      <input type="number" name="month" id="month" class="form-control py-3" placeholder="MM" required formControlName="cardm" />
+                                                      <span
+                                                          class="form-text text-danger" *ngIf=" payFormm.get('cardm')?.invalid && payFormm.get('cardm')?.touched "
+                                                      >
+                                                          *Required
+                                                      </span>
+
+                                                      <input type="number" name="year" id="year" class="form-control py-3" placeholder="YY" required formControlName="cardy" />
+                                                  </div>
+                                              </div>
+                                              <div class="col pe-0">
+                                                  <input type="number" name="cvv" id="cvv" class="form-control py-3" placeholder="CVV" required formControlName="cardcv" />
+                                              </div>
+                                          </div>
+                                      </form>
+                                  </div>
+
+                                  <div class="tab-pane fade py-5 pt-5" id="v-pills-cash" role="tabpanel" aria-labelledby="v-pills-cash-tab" tabindex="0">
+                                      <h6>
+                                          <br />
+                                          COD selected
+                                      </h6>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="text-center pt-3">
+                              <button class="btn btn-success py-2" (click)="payment()">
+                                  Make Payment ({{ total | currency: "INR" }})
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-lg-4">
+          <app-checkout></app-checkout>
+      </div>
+  </div>
+</div>
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Add New Address</h5>
+      <button id="close" type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+      <form [formGroup]="billingForm" id="ofc">
+          <div class="row">
+              <div class="col">
+                  <label for="firstname" class="form-label">First Name*</label>
+                  <input type="text" class="form-control" id="firstName" formControlName="firstName" />
+              </div>
+              <div class="col">
+                  <label for="lasttname" class="form-label">Last Name*</label>
+                  <input type="text" class="form-control" id="lasttName" formControlName="lastName" />
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col mb-3">
+                  <label for="mobNo" class="form-label">Mobile number*</label>
+                  <input type="text" class="form-control" id="mobNo" formControlName="mobNo" />
+                  <span
+                      class="form-text text-danger help-block"
+                      *ngIf="
+            billingForm.get('mobNo')?.invalid &&
+            billingForm.get('mobNo')?.touched
+          "
+                  >
+                      Enter valid mobile number
+                  </span>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col mb-3">
+                  <label for="addr1" class="form-label">Flat/House No,Building Name*</label>
+                  <input type="text" class="form-control" id="addr1" formControlName="addr1" />
+                  <span
+                      class="form-text text-danger help-block"
+                      *ngIf="
+            billingForm.get('addr1')?.invalid &&
+            billingForm.get('addr1')?.touched
+          "
+                  >
+                      Address field should not be empty
+                  </span>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col">
+                  <label for="addr4" class="form-label">Town/City*</label>
+                  <input type="text" class="form-control" id="addr4" formControlName="addr4" />
+              </div>
+              <div class="col">
+                  <label for="addr5" class="form-label">State*</label>
+                  <input type="text" class="form-control" id="addr5" formControlName="addr5" />
+                  <option></option>
+              </div>
+              <div class="col">
+                <label for="addr6" class="form-label">PIN Code*</label>
+                <input type="number" class="form-control" id="addr6" formControlName="addr6" min="4" />
+            </div>
+          </div>
+
+      
+          <div>
+              <button class="btn btn-primary w-100" (click)="onPush()" [disabled]="!billingForm.valid" type="submit">
+                  Add Address
+              </button>
+          </div>
+      </form>
+  </div>
+</div>

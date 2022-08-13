@@ -1,0 +1,13 @@
+.cart-button {
+    width: 90px;
+    border-radius: 30px;
+}
+
+.btn-success {
+    width: 150px;
+    border-radius: 30px;
+}
+button {
+    border-radius: 30px;
+    min-width: 90px;
+}

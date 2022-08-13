@@ -1,0 +1,58 @@
+#card1{
+    background-color:azure;
+    height:fit-content;
+    margin-top: 20px;
+}
+#nav
+{
+    background-color:rgb(5, 15, 24);
+    color: black;
+}
+#s-addr .card{
+    position: fixed;
+    margin-left: 850px;
+    margin-top: -457px;
+    border-radius: 2px;
+    box-shadow: inset;
+    background-color: rgb(6, 28, 28);
+    width: fit-content;
+}
+#s-addr1{
+    background-color: rgb(11, 13, 21);
+    color: white;
+  
+}
+
+/* #ofc{
+    background-color: rgb(144, 142, 157);
+} */
+
+#btn1{
+    position: absolute;
+   margin-left: 945px;
+   margin-top: -255px;
+   
+    width: 273px;
+    color: white;
+    background-color: black;
+}
+
+.card {
+    text-align: center;
+}
+
+.form-check-input {
+    z-index: 1;
+    top: 10px;
+    left: 10px;
+}
+
+.new-card {
+    height: 150px;
+}
+
+.title-color {
+    color: #502e91;
+    font-size: 30px;
+    text-align: center;
+}
