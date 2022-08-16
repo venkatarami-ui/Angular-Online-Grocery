@@ -4,7 +4,7 @@
       <h4 class="card-title title-color">Grocerary Details View</h4>
         <div class="nav-item">
             <!-- <span><strong class="cart-but btn-value"> Product Checkout Info : {{ totalItem }} </strong> </span> -->
-            <button class="btn btn-default  btn-success btn-value " routerLink="/cart">Processed to Checkout </button>
+            <button class="btn btn-default  btn-success btn-value " routerLink="/cart">Processed to Checkout  <strong style="padding: 10px; font-size:24px;">  : {{ totalItem }} </strong> </button>
         </div>
       <div class="container row mx-auto py-3 g-2">
           <div class="col-lg-3 col-md-3 col-12" *ngFor="let product of products">

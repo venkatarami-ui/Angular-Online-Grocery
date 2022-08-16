@@ -124,7 +124,8 @@ export class AddressComponent implements OnInit {
       console.log('Your order has been placed');
       this.total = 0;
       this.cartService.removeAllCartItem();
-      this.router.navigate(['/dashboard']);
+      // this.router.navigate(['/dashboard']);
+      this.router.navigate(['/OrderConfirm']);
     } else {
       console.log('Please fill out the empty fields');
     }

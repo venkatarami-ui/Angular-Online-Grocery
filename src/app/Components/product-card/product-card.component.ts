@@ -29,17 +29,19 @@ export class ProductCardComponent  implements OnInit {
     
   ) {}
 
-  // export class HeaderComponent implements OnInit {
-  //   userLoggedIn = false;
-  //   public totalItem: number = 0;
-  //   constructor(
-  //     private authService: AuthService,
-  //     private cartService: CartService
-  //   ) {}
-
-
-
   ngOnInit(): void {
+
+    this.authService.user.subscribe((res) => {
+      if (res) {
+        this.userLoggedIn = true;
+      } else {
+        this.userLoggedIn = false;
+      }
+    });
+
+    this.cartService.getProducts().subscribe((res) => {
+      this.totalItem = res.length;
+    });
     this.getDetails
       .getProductDetails()
       .pipe(

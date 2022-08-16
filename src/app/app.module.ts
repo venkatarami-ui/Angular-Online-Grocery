@@ -23,6 +23,7 @@ import { FooterComponent } from './Components/footer/footer.component';
 import { SigninComponent } from './auths/signin/signin.component';
 import { SignupComponent } from './auths/signup/signup.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { OrderConfirmComponent } from './Components/order-confirm/order-confirm.component';
 // import { MyordersComponent } from './Components/myorders/myorders.component';
 
 
@@ -42,6 +43,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     SigninComponent,
     SignupComponent,
     NavbarComponent,
+    OrderConfirmComponent,
     // MyordersComponent
   ],
   imports: [

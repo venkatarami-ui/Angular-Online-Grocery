@@ -1,1 +1,58 @@
-<p>myorders works!</p>
+<!-- 
+    <div class="py-5">
+      <div class="card border-0 shadow">
+        <div class="card-body">
+          <h4 class="card-title">Your Cart</h4>
+          <div class="text-center">
+            <img
+              src="/assets/Images/emptyCart.png"
+              class="img-fluid w-25"
+              alt="Empty Cart"
+            />
+            <h4>Your cart is empty!</h4>
+            <h6>Add item to it now</h6>
+            <button class="btn btn-warning" routerLink="/">Shop Now</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+
+
+    <ng-container *ngIf="products.length">
+      <div class="py-5">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title mb-3">Your Cart</h4>
+            <div class="bill-summary mb-3">
+              <div class="text-center" *ngFor="let item of products">
+                <div class="row mx-auto align-items-center">
+                  <div class="col-2">
+                    <img
+                      src="{{ item.imgUrl }}"
+                      class="img-fluid"
+                      alt="{{ item.productName }}"
+                    />
+                  </div>
+                  <div class="col-5">
+                    <h6 class="card-title">{{ item.productName }}</h6>
+                  </div>
+                  <div class="col-5">
+                    <span>₹{{ item.price }}</span>
+                  </div>
+                </div>
+                <hr />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h5>To Pay</h5>
+              </div>
+              <div class="col text-end">
+                <!-- <h5>{{ grandTotal | currency : 'INR' }}</h5> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
